@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative Number Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    .section { margin: 20px auto; width: 200px; }
+    button { padding: 10px 20px; margin: 5px; }
+    .number { font-size: 24px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Collaborative Number Tracker</h1>
+
+  <!-- Friend 1 -->
+  <div class="section">
+    <h2>Friend 1</h2>
+    <div id="number1" class="number">0</div>
+    <button onclick="updateNumber('friend1', -1)">-</button>
+    <button onclick="updateNumber('friend1', 1)">+</button>
+  </div>
+
+  <!-- Friend 2 -->
+  <div class="section">
+    <h2>Friend 2</h2>
+    <div id="number2" class="number">0</div>
+    <button onclick="updateNumber('friend2', -1)">-</button>
+    <button onclick="updateNumber('friend2', 1)">+</button>
+  </div>
+
+  <!-- Your Section -->
+  <div class="section">
+    <h2>Your Number</h2>
+    <div id="number3" class="number">0</div>
+    <button onclick="updateNumber('yourNumber', -1)">-</button>
+    <button onclick="updateNumber('yourNumber', 1)">+</button>
+  </div>
+
+  <script>
+    // This function updates the number in each section.
+    function updateNumber(user, change) {
+      let numberDiv = document.getElementById(`number${user === 'friend1' ? '1' : user === 'friend2' ? '2' : '3'}`);
+      let currentNumber = parseInt(numberDiv.innerText);
+      numberDiv.innerText = currentNumber + change;
+    }
+  </script>
+</body>
+</html>
